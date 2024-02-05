@@ -74,17 +74,7 @@ async function callApi(endpoint, accessToken, emailAddress, emailBody) {
       },
       saveToSentItems: true,
     };
-    try {
-      const response = await axios.get('https://graph.microsoft.com/v1.0/users/b7a315e8-4d3e-4f4f-9ae6-46298ffbbb95/',
-      {headers: {
-              Authorization: `Bearer ${accessToken}`,
-              'Content-Type': 'application/json',
-            }})
-  
-      console.log('Email sent successfully:', response.data);
-    } catch (error) {
-      console.error('Error sending email:', error.response.data.error);
-    }
+    
 
     try {
       const response = await axios.post(emailEndpoint, emailPayload, {
@@ -97,8 +87,21 @@ async function callApi(endpoint, accessToken, emailAddress, emailBody) {
       console.log('Email sent successfully:', response.data);
     } catch (error) {
       console.error('Error sending email:', error.response.data.error);
+		return error
     }
   }
+	
+	// try {
+//   const response = await axios.get('https://graph.microsoft.com/v1.0/users/b7a315e8-4d3e-4f4f-9ae6-46298ffbbb95/',
+//   {headers: {
+//           Authorization: `Bearer ${accessToken}`,
+//           'Content-Type': 'application/json',
+//         }})
+
+//   console.log('Email sent successfully:', response.data);
+// } catch (error) {
+//   console.error('Error sending email:', error.response.data.error);
+// }
   //   axios
   // .post("https://graph.microsoft.com/v1.0/users/")
   // .then(response => {
@@ -107,7 +110,7 @@ async function callApi(endpoint, accessToken, emailAddress, emailBody) {
   // .catch(error => {
   //   console.log(error);
   // });
-  sendMail()
+  await sendMail()
 };
 
 

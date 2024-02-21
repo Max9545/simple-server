@@ -74,7 +74,7 @@ res.header('Access-Control-Allow-Credentials', true);
   	//var fetch = require('./fetch');
    // var auth = require('./auth');
     var authResponse = await auth.getToken(auth.tokenRequest);
-    await fetch.callApi(auth.apiConfig.uri, authResponse.accessToken, req.body.email, req.body.message);
+    await fetch.callApi(auth.apiConfig.uri, authResponse.accessToken, req.body.email, req.body.message, req.body.sender);
 
 
 } catch (error) {

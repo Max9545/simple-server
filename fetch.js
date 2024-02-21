@@ -5,7 +5,7 @@ const axios = require('axios');
  * @param {string} endpoint 
  * @param {string} accessToken 
  */
-async function callApi(endpoint, accessToken, emailAddress, emailBody) {
+async function callApi(endpoint, accessToken, emailAddress, emailBody, sender) {
 
     const options = {
         headers: {
@@ -13,7 +13,7 @@ async function callApi(endpoint, accessToken, emailAddress, emailBody) {
         }
     };
 
-    console.log('request made to web API at: ' + new Date().toString(), emailAddress, emailBody);
+    console.log('request made to web API at: ' + new Date().toString(), emailAddress, emailBody, sender);
 
     // try {
     //     const response = await axios.get(endpoint, options);
@@ -55,11 +55,17 @@ async function callApi(endpoint, accessToken, emailAddress, emailBody) {
   //     console.log(response.status);
   //   });
   async function sendMail() {
+
+    const client = sender === 'confirm' ? '604769fb-f8d3-4f27-a088-c04f00a2372c' : 'c746dde6-a485-4274-af70-d830ef7f7a01' 
+
+    // const client = 'c746dde6-a485-4274-af70-d830ef7f7a01'
+console.log(sender)
+    console.log(client)
     
-    const emailEndpoint = `https://graph.microsoft.com/v1.0/users/b7a315e8-4d3e-4f4f-9ae6-46298ffbbb95/sendMail`;
+    const emailEndpoint = `https://graph.microsoft.com/v1.0/users/${client}/sendMail`
     const emailPayload = {
       message: {
-        subject: 'Hello!! Sample Comic Availability Email',
+        subject: 'Test 1',
         body: {
           content: emailBody,
           contentType: 'Text',

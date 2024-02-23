@@ -40,7 +40,7 @@ app.use(express.json());
 app.post('/sendMail', async (req, res) => {
 	
 	//res.send('Email sent successfully:', req.body.email);
-	 res.header('Access-Control-Allow-Origin', 'http://localhost:3000, https://comicsignuptest.comedyworks.com/');
+	 res.header('Access-Control-Allow-Origin', 'https://comicsignuptest.comedyworks.com/');
 	//res.header('Access-Control-Allow-Origin', 'http://localhost:3000, http://example.com');
 res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
 res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
